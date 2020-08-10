@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>88. 合并两个有序数组</title>
+</head>
+<body>
+<script>
+var merge = function(nums1, m, nums2, n) {
+    var total = m + n
+    while(n > 0) {
+        if (nums1[m - 1] > nums2[n - 1]) {
+            nums1[total - 1] = nums1[m - 1]
+            m--
+        } else {
+            nums1[total - 1] = nums2[n - 1]
+            n--
+        }
+        total--
+    }
+};
+var nums = [1,2,3,0,0,0]
+console.log(merge(nums, 3, [2,5,6], 3))
+console.log(nums)
+</script>
+</body>
+</html>
