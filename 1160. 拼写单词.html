@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1160. 拼写单词</title>
+</head>
+<body>
+<script>
+var countCharacters = function(words, chars) {
+    var sum = 0
+    for (var i = 0; i < words.length; i++) {
+        var flag = true
+        var tempChar = chars
+        for (var j = 0; j < words[i].length; j++) {
+            var tempWord = words[i][j]
+            if (tempChar.indexOf(tempWord) >= 0) {
+                tempChar = tempChar.replace(tempWord, '')
+            } else {
+                flag = false
+                break
+            }
+        }
+        if (flag) {
+            sum += words[i].length
+        }
+    }
+    return sum
+};
+console.log(countCharacters(["cat","bt","hat","tree"], "atach"))
+"usdruypficfbpfbivlrhutcgvyjenlxzeovdyjtgvvfdjzcmikjraspdfp"
+</script>
+</body>
+</html>
