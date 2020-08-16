@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>118. 杨辉三角</title>
+</head>
+<body>
+<script>
+var generate = function(numRows) {
+    var arr = []
+    for (var i = 0; i < numRows; i++) {
+        if (i === 0) {
+            arr.push([1])
+            continue
+        }
+        var temp = []
+        for (var j = 0; j <= i; j++) {
+            if (j === 0 || j === i) {
+                temp.push(1)
+            } else {
+                temp.push(arr[i - 1][j - 1] + arr[i - 1][j])
+            }
+        }
+        arr.push(temp)
+    }
+    return arr
+}
+console.log(generate(5))
+
+</script>
+</body>
+</html>
