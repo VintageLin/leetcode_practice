@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>643. 子数组最大平均数 I</title>
+</head>
+<body>
+<script>
+// var findMaxAverage = function(nums, k) {
+//     var sum = []
+//     for (var i = 0; i <= nums.length - k; i++) {
+//         var res = nums.slice(i, i + k).reduce((total, current) => {
+//             return total + current
+//         }, 0)
+//         sum.push(res)
+//     }
+//     return (Math.max(...sum)) / k
+// };
+
+// var findMaxAverage = function(nums, k) {
+//     var sum = []
+//     var max = -Infinity
+//     for (var i = 0; i <= nums.length - k; i++) {
+//         var res = nums.slice(i, i + k).reduce((total, current) => {
+//             return total + current
+//         }, 0)
+//         if (res > max) {
+//             max = res
+//         }
+//     }
+//     return max / k
+// };
+
+// 滑动窗口
+var findMaxAverage = function(nums, k) {
+    var l = 0
+    var r = 0
+    var sum = 0
+    var max = -Infinity
+    while (r < nums.length) {
+        if (r - l < k) {
+            sum += nums[r]
+            r++
+            max = sum
+            continue
+        }
+        sum -= nums[l]
+        sum += nums[r]
+        l++
+        r++
+        if (sum > max) {
+            max = sum
+        }
+    }
+    return max / k
+};
+
+console.log(findMaxAverage([1,12,-5,-6,50,3], 4))
+// console.log(findMaxAverage([-6662,5432,-8558,-8935,8731,-3083,4115,9931,-4006,-3284,-3024,1714,-2825,-2374,-2750,-959,6516,9356,8040,-2169,-9490,-3068,6299,7823,-9767,5751,-7897,6680,-1293,-3486,-6785,6337,-9158,-4183,6240,-2846,-2588,-5458,-9576,-1501,-908,-5477,7596,-8863,-4088,7922,8231,-4928,7636,-3994,-243,-1327,8425,-3468,-4218,-364,4257,5690,1035,6217,8880,4127,-6299,-1831,2854,-4498,-6983,-677,2216,-1938,3348,4099,3591,9076,942,4571,-4200,7271,-6920,-1886,662,7844,3658,-6562,-2106,-296,-3280,8909,-8352,-9413,3513,1352,-8825], 90))
+</script>
+</body>
+</html>
