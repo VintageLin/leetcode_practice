@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>697. 数组的度</title>
+</head>
+<body>
+<script>
+var findShortestSubArray = function(nums) {
+    var numsMap = {}
+    var max = 0
+    for (var i = 0; i < nums.length; i++) {
+        numsMap[nums[i]] = numsMap[nums[i]] ? ++numsMap[nums[i]] : 1
+        if (numsMap[nums[i]] > max) {
+            max = numsMap[nums[i]]
+        }
+    }
+    var min = Infinity
+    var map = new Map()
+    for (var j = 0; j < nums.length; j++) {
+        var cur = nums[j]
+        map.has(cur) ? map.set(cur, map.get(cur) + 1) : map.set(cur, 1)
+        if (map.get(cur) === max) {
+            var dis = j - nums.indexOf(cur) + 1
+            if (dis < min) {
+                min = dis
+            }
+        }
+    }
+    return min
+};
+// console.log(findShortestSubArray([1, 2, 2, 3, 1]))
+console.log(findShortestSubArray([1,2,2,3,1,4,2]))
+</script>
+</body>
+</html>
