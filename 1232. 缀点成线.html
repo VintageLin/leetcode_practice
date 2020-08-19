@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1232. 缀点成线</title>
+</head>
+<body>
+<script>
+var checkStraightLine = function(coordinates) {
+    if (coordinates.length <= 2) return true
+    for (var i = 1; i < coordinates.length - 1; i++) {
+        var k = (coordinates[i + 1][1] - coordinates[i][1]) * (coordinates[i][0] - coordinates[i - 1][0]) === (coordinates[i + 1][0] - coordinates[i][0]) * (coordinates[i][1] - coordinates[i - 1][1])
+        if (!k) {
+            return false
+        }
+    }
+    return true 
+};
+// console.log(checkStraightLine([[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]))  // true
+console.log(checkStraightLine([[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]))
+// console.log(checkStraightLine([[0,0],[0,1],[0,-1]]))
+
+
+</script>
+</body>
+</html>
