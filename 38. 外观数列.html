@@ -8,9 +8,24 @@
 <body>
 <script>
 var countAndSay = function(n) {
-
+    if (n === 1) return '1'
+    var str = '1'
+    for (var i = 1; i < n; i++) {
+        var count = 1
+        var cur = ''
+        for (var j = 0; j < str.length; j++) {
+            if (str[j] !== str[j + 1]) {
+                cur += count + '' + str[j]
+                count = 1
+            } else {
+                count++
+            }
+        }
+        str = cur
+    }
+    return str
 };
-console.log(countAndSay(4))
+console.log(countAndSay(4))  
 </script>
 </body>
 </html>
