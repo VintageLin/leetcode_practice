@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>999. 可以被一步捕获的棋子数</title>
+</head>
+<body>
+<script>
+var numRookCaptures = function(board) {
+    var x = 0, y = 0
+    for (var i = 0; i< board.length; i++) {
+        for (var j = 0; board[i].length; j++) {
+            if (board[i][j] === 'R') {
+                x = i
+                y = j
+            }
+        }
+    }
+    var mX = x, mY = y 
+    while (board[mX][mY] !== 'B') {
+        if (board[mX][mY] === '') {}
+    }
+};
+console.log(numRookCaptures([[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]))
+
+</script>
+</body>
+</html>
